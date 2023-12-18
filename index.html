@@ -174,8 +174,6 @@
 
                 ++currentTime;
 
-                firstNumber = getRandomInt(0, maxCalc);
-                firstNumberLabel.textContent = firstNumber;
                 var tempInt = getRandomInt(0, 1);
                 if(tempInt === 0){
                     computeSignLable.textContent = "+";
@@ -183,16 +181,14 @@
                     computeSignLable.textContent = "-";
                 }
                 if(computeSignLable.textContent === "+"){
-                    if(isAllowCarryNumber)
-                        secondNumber = getRandomInt(0, maxCalc - firstNumber);
-                    else
-                        secondNumber = getRandomInt(0, 10 - firstNumber % 10);
+                    firstNumber = getRandomInt(2, maxCalc - 2);
+                    firstNumberLabel.textContent = firstNumber;
+                    secondNumber = getRandomInt(11 - firstNumber > 0 ? 11 - firstNumber :  2, maxCalc - firstNumber);
                     secondNumberLabel.textContent = secondNumber;
                 } else {
-                    if(isAllowCarryNumber)
-                        secondNumber = getRandomInt(0, firstNumber);
-                    else
-                        secondNumber = getRandomInt(0, firstNumber % 10);
+                    firstNumber = getRandomInt(11, maxCalc);
+                    firstNumberLabel.textContent = firstNumber;
+                    secondNumber = getRandomInt(2, firstNumber - 2);
                     secondNumberLabel.textContent = secondNumber;
                 }
                 correctResult = eval(`${firstNumber}${computeSignLable.textContent}${secondNumber}`);
