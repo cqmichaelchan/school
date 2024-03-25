@@ -74,11 +74,11 @@
             
             var isAllowCarryNumber = true;
             var countdownInterval;
-            var countdownSecond = 6;
-            var maxCalc = 20;
+            var countdownSecond = 10;
+            var maxCalc = 100;
             var correctResult;
             var totalScore = 100;
-            var totalTime = 20;
+            var totalTime = 10;
             var currentTime = 0;
             var userScore = 0;
             var isEnd = false;
@@ -183,12 +183,16 @@
                 if(computeSignLable.textContent === "+"){
                     firstNumber = getRandomInt(2, maxCalc - 2);
                     firstNumberLabel.textContent = firstNumber;
-                    secondNumber = getRandomInt(11 - firstNumber > 0 ? 11 - firstNumber :  2, maxCalc - firstNumber);
+                    var secondUnitNumber = getRandomInt(0, 10 - firstNumber % 10 - 1);
+                    var secondTensNumber = getRandomInt(0, 10 - firstNumber / 10 - 1);
+                    secondNumber = secondTensNumber * 10 + secondUnitNumber;
                     secondNumberLabel.textContent = secondNumber;
                 } else {
-                    firstNumber = getRandomInt(11, maxCalc);
+                    firstNumber = getRandomInt(11, maxCalc - 1);
                     firstNumberLabel.textContent = firstNumber;
-                    secondNumber = getRandomInt(2, firstNumber - 2);
+                    var secondUnitNumber = getRandomInt(0, firstNumber % 10 - 1);
+                    var secondTensNumber = getRandomInt(0, firstNumber / 10 - 1);
+                    secondNumber = secondTensNumber * 10 + secondUnitNumber;
                     secondNumberLabel.textContent = secondNumber;
                 }
                 correctResult = eval(`${firstNumber}${computeSignLable.textContent}${secondNumber}`);
