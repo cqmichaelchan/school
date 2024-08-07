@@ -21,6 +21,7 @@
             }
             .countdownLabel {
                 width: 138px;
+                display: none;
             }
             .reStart {
                 margin-left: 20px;
@@ -30,6 +31,7 @@
             .nextTopic {
                 margin-left: 15px;
                 font-size: 38px;
+                display: none;
             }
             .errorExamDiv {
                 font-size: 38px;
@@ -74,7 +76,7 @@
             
             var isAllowCarryNumber = true;
             var countdownInterval;
-            var countdownSecond = 8;
+            var countdownSecond = 10;
             var maxCalc = 100;
             var correctResult;
             var totalScore = 100;
@@ -105,7 +107,7 @@
                 var errorExamDiv = document.getElementById("errorExamDiv");
                 examDiv.style.display = "block";
                 numberButtonDiv.style.display = "block";
-                countdownDiv.style.display = "block";
+                countdownDiv.style.display = "none";
                 errorExamDiv.style.display = "none";
 
                 currentTime = 0;
