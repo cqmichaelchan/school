@@ -5,35 +5,11 @@
     </head>
     <body>
 		<script type="text/javascript">
-		  var addressNumber = 100;
-				function startRequest() {
-			if (addressNumber > 199) {
-			  window.location.href = "https://cqmichaelchan.github.io/school/";
-			  return;
-			}
-			
-			var url = "http://192.168.0." + addressNumber + ":805/";
-			var xhr = new XMLHttpRequest();
-			xhr.timeout = 50;
-			xhr.open("GET", url, true);
-			  
-			xhr.onreadystatechange = function () {
-				if (xhr.readyState === 4) {
-					if (xhr.status === 200) {
-					  window.location.href = url;
-					}
-				}
-			};
-			xhr.send();
-			xhr.ontimeout = function (ev) {
-			  addressNumber++;
-			  startRequest();
-			};
-			xhr.onerror = function (ev) {
-			  window.location.href = url;
-			};
-				}
-		  startRequest();
+      var img = new Image();
+      img.src = "http://192.168.0.106:805/assignment.jpg";
+      img.onerror = function () {
+        console.log("error");
+      };
 		</script>
     </body>
 </html>
