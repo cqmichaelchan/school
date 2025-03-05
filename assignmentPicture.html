@@ -7,6 +7,11 @@
     <title>作业题目</title>
   </head>
   <body>
-    <img src="assignment.jpg" width="600" />
+    <img id="assignmentImg" src="assignment.jpg" width="600" />
+
+    <script type="text/javascript">
+      var assignmentImg = document.getElementById("assignmentImg");
+      assignmentImg.src = assignmentImg.src + "?" + new Date().getTime();
+    </script>
   </body>
 </html>
