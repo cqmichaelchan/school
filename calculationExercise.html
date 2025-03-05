@@ -4,7 +4,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>乘法口诀</title>
+    <title>计算练习</title>
     <style type="text/css">
       .examDiv {
         font-size: 90px;
@@ -145,6 +145,7 @@
       var isAllowCarryNumber = true;
       var countdownInterval;
       var countdownSecond = 10;
+      var maxCalc = 100;
       var correctResult;
       var totalScore = 100;
       var totalTime = 20;
@@ -240,13 +241,33 @@
         }
 
         ++currentTime;
-        computeSignLable.textContent = "×";
 
-        firstNumber = getRandomInt(2, 9);
-        secondNumber = getRandomInt(2, 9);
-        firstNumberLabel.textContent = firstNumber;
-        secondNumberLabel.textContent = secondNumber;
-        correctResult = eval(`${firstNumber}*${secondNumber}`);
+        var tempInt = getRandomInt(0, 1);
+        if (tempInt === 0) {
+          computeSignLable.textContent = "+";
+        } else {
+          computeSignLable.textContent = "-";
+        }
+        if (computeSignLable.textContent === "+") {
+          firstNumber = getRandomInt(2, maxCalc - 2);
+          //var secondUnitNumber = getRandomInt(0, 10 - firstNumber % 10 - 1);
+          //var secondTensNumber = getRandomInt(0, 10 - firstNumber / 10 - 1);
+          //secondNumber = secondTensNumber * 10 + secondUnitNumber;
+          secondNumber = getRandomInt(2, maxCalc - firstNumber);
+          firstNumberLabel.textContent = firstNumber;
+          secondNumberLabel.textContent = secondNumber;
+        } else {
+          firstNumber = getRandomInt(11, maxCalc);
+          //var secondUnitNumber = getRandomInt(0, firstNumber % 10 - 1);
+          //var secondTensNumber = getRandomInt(0, firstNumber / 10 - 1);
+          //secondNumber = secondTensNumber * 10 + secondUnitNumber;
+          secondNumber = getRandomInt(2, firstNumber - 1);
+          firstNumberLabel.textContent = firstNumber;
+          secondNumberLabel.textContent = secondNumber;
+        }
+        correctResult = eval(
+          `${firstNumber}${computeSignLable.textContent}${secondNumber}`
+        );
 
         resultLabel.textContent = "";
         countdownInterval = setInterval(countdown, 1000);
