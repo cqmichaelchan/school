@@ -16,11 +16,11 @@
     <div style="margin-top: 100px; margin-left: 120px; font-size: 96px;">
       <a id="multiplication" style="text-decoration: none;">乘法口诀</a>
     </div>
-    <div style="margin-top: 100px; margin-left: 120px; font-size: 96px;">
-      192.168.1.<input type="number" onchange="numberOneIpChange()" style="font-size: 96px; width: 200px;"/>
+    <div style="margin-top: 100px; margin-left: 120px; font-size: 64px;">
+      192.168.1.<input type="number" onchange="numberOneIpChange()" style="font-size: 64px; width: 130px;"/>
     </div>
-    <div style="margin-top: 100px; margin-left: 120px; font-size: 96px;">
-      192.168.0.<input type="number" onchange="numberZeroIpChange()" style="font-size: 96px; width: 200px;"/>
+    <div style="margin-top: 100px; margin-left: 120px; font-size: 64px;">
+      192.168.0.<input type="number" onchange="numberZeroIpChange()" style="font-size: 64px; width: 130px;"/>
     </div>
     <script type="text/javascript">
       function lindAddRandom(ipAddress) {
@@ -37,11 +37,19 @@
       lindAddRandom();
 
       function numberZeroIpChange() {
-        lindAddRandom("192.168.0." + event.target.value);
+		var ipNumber = event.target.value;
+		if (ipNumber.length > 0)
+			lindAddRandom("192.168.0." + ipNumber);
+		else
+			lindAddRandom();
       }
       
       function numberOneIpChange() {
-        lindAddRandom("192.168.1." + event.target.value);
+        var ipNumber = event.target.value;
+		if (ipNumber.length > 0)
+			lindAddRandom("192.168.0." + ipNumber);
+		else
+			lindAddRandom();
       }
     </script>
   </body>
