@@ -8,21 +8,41 @@
   </head>
   <body>
     <div style="margin-top: 120px; margin-left: 120px; font-size: 96px;">
-      <a id="assignment" href="assignmentPicture.html" style="text-decoration: none;">作业题目</a>
+      <a id="assignment" style="text-decoration: none;">作业题目</a>
     </div>
     <div style="margin-top: 100px; margin-left: 120px; font-size: 96px;">
-      <a id="calculation" href="calculationExercise.html" style="text-decoration: none;">计算练习</a>
+      <a id="calculation" style="text-decoration: none;">计算练习</a>
     </div>
     <div style="margin-top: 100px; margin-left: 120px; font-size: 96px;">
-      <a id="multiplication" href="multiplicationTable.html" style="text-decoration: none;">乘法口诀</a>
+      <a id="multiplication" style="text-decoration: none;">乘法口诀</a>
+    </div>
+    <div style="margin-top: 100px; margin-left: 120px; font-size: 96px;">
+      192.168.1.<input type="number" onchange="numberOneIpChange()" style="font-size: 96px; width: 200px;"/>
+    </div>
+    <div style="margin-top: 100px; margin-left: 120px; font-size: 96px;">
+      192.168.0.<input type="number" onchange="numberZeroIpChange()" style="font-size: 96px; width: 200px;"/>
     </div>
     <script type="text/javascript">
-      var assignment = document.getElementById("assignment");
-      assignment.href = assignment.href + "?" + new Date().getTime();
-      var calculation = document.getElementById("calculation");
-      calculation.href = calculation.href + "?" + new Date().getTime();
-      var multiplication = document.getElementById("multiplication");
-      multiplication.href = multiplication.href + "?" + new Date().getTime();
+      function lindAddRandom(ipAddress) {
+        var url = "";
+        if (ipAddress !== undefined)
+          url = "http://" + ipAddress + ":805/";
+        var assignment = document.getElementById("assignment");
+        assignment.href = url + "assignmentPicture.html" + "?" + new Date().getTime();
+        var calculation = document.getElementById("calculation");
+        calculation.href = url + "calculationExercise.html" + "?" + new Date().getTime();
+        var multiplication = document.getElementById("multiplication");
+        multiplication.href = url + "multiplicationTable.html" + "?" + new Date().getTime();
+      }
+      lindAddRandom();
+
+      function numberZeroIpChange() {
+        lindAddRandom("192.168.0." + event.target.value);
+      }
+      
+      function numberOneIpChange() {
+        lindAddRandom("192.168.1." + event.target.value);
+      }
     </script>
   </body>
 </html>
