@@ -35,17 +35,17 @@
         multiplication.href = url + "multiplicationTable.html" + "?" + new Date().getTime();
       }
       lindAddRandom();
-
-      function numberZeroIpChange() {
-		var ipNumber = event.target.value;
-		if (ipNumber.length > 0)
-			lindAddRandom("192.168.0." + ipNumber);
-		else
-			lindAddRandom();
-      }
       
       function numberOneIpChange() {
         var ipNumber = event.target.value;
+		if (ipNumber.length > 0)
+			lindAddRandom("192.168.1." + ipNumber);
+		else
+			lindAddRandom();
+      }
+	  
+	  function numberZeroIpChange() {
+		var ipNumber = event.target.value;
 		if (ipNumber.length > 0)
 			lindAddRandom("192.168.0." + ipNumber);
 		else
